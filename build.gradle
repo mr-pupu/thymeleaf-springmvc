@@ -1,0 +1,72 @@
+description "Projeto modelo com Spring MVC + Thymeleaf + Spring Data + Bootstrap"
+
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+project.ext.springFrameworkVersion = '3.2.2.RELEASE'
+project.ext.springSecurityVersion = '3.1.3.RELEASE'
+project.ext.hibernateVersion = '4.2.0.Final'
+project.ext.slf4jVersion = '1.7.1'
+
+repositories {
+	maven { url 'http://repo.springsource.org/libs-milestone' }
+	maven { url 'http://repo.springsource.org/libs-snapshot' }
+    mavenCentral()
+}
+
+dependencies {
+		compile "javax.inject:javax.inject:1",
+				'joda-time:joda-time:2.1',
+				'cglib:cglib-nodep:2.2.2',
+				
+				// log
+				"org.slf4j:slf4j-api:${project.slf4jVersion}",
+				"org.slf4j:slf4j-log4j12:${project.slf4jVersion}",
+				
+				// spring 
+				"org.springframework:spring-core:${project.springFrameworkVersion}",				
+				"org.springframework:spring-beans:${project.springFrameworkVersion}",
+				"org.springframework:spring-context:${project.springFrameworkVersion}",
+				"org.springframework:spring-context-support:${project.springFrameworkVersion}",
+				"org.springframework:spring-web:${project.springFrameworkVersion}",
+				"org.springframework:spring-webmvc:${project.springFrameworkVersion}",
+				"org.springframework.security:spring-security-web:${project.springSecurityVersion}",
+				"org.springframework.security:spring-security-taglibs:${project.springSecurityVersion}",
+				"org.springframework.security:spring-security-config:${project.springSecurityVersion}",					
+				"org.springframework:spring-orm:${project.springFrameworkVersion}",
+				"org.springframework:spring-jdbc:${project.springFrameworkVersion}",
+				
+				// Hibernate			 
+				'org.hibernate:hibernate-validator:4.3.0.Final',
+				"org.hibernate:hibernate-core:${project.hibernateVersion}",
+				"org.hibernate:hibernate-envers:${project.hibernateVersion}",
+				"org.hibernate:hibernate-c3p0:${project.hibernateVersion}",
+				"org.hibernate:hibernate-ehcache:${project.hibernateVersion}",
+				
+				// JPA
+				'org.springframework.data:spring-data-jpa:1.3.1.BUILD-SNAPSHOT',
+				
+				// h2
+				"com.h2database:h2:1.3.168",
+
+				// mongodb
+				"org.springframework.data:spring-data-mongodb:1.1.0.RELEASE",
+				// file upload
+				"commons-fileupload:commons-fileupload:1.2.2",
+				"commons-io:commons-io:2.4",
+				//aop
+				"org.springframework:spring-aop:${project.springFrameworkVersion}",
+				"org.aspectj:aspectjrt:1.7.0",
+				"org.aspectj:aspectjweaver:1.7.0",
+				"javax.servlet:servlet-api:2.5",
+			 
+				// Template Engine for XHTML, HTML5
+				"org.thymeleaf:thymeleaf:2.0.14",
+				"org.thymeleaf:thymeleaf-spring3:2.0.14",
+				"org.thymeleaf.extras:thymeleaf-extras-springsecurity3:1.0.0-beta2",
+				"nz.net.ultraq.web.thymeleaf:thymeleaf-layout-dialect:1.0.6"
+}
+
+httpPort = 8080
+stopPort = 9451
+stopKey = 'foo'

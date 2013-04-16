@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" 
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="thymeleaf/template">
+
+<head>
+	<title>Sisgac :: Notícias</title>
+</head>
+<body>
+
+
+	<section layout:fragment="content">
+
+		<ul class="breadcrumb">
+			<li><a href="#">Notícias</a> <span class="divider">/</span></li>
+		</ul>
+
+
+
+	<a  href="#novaNoticia-container" role="button" class="btn btn-primary  pull-right" data-toggle="modal">Nova Notícia</a>
+		
+	  <div layout:include="thymeleaf/modal :: modal" th:with="modalId='novaNoticia', modalHeader='Nova notícia'" >
+	  
+	    <div layout:fragment="modal-content">
+	    
+	    		<form action="#" method="POST" th:action="@{/noticias}">
+					<div class="modal-body">
+	 
+						<input class="span5" type="text" name="titulo" placeholder="Título da Mensagem" /> 
+						<br />
+						
+						<textarea rows="5"  class="span5" placeholder="Digite uma descrição resumida da notícia"></textarea>
+						
+						<br /> 
+					
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+						<button class="btn btn-primary" type="submit">Adicionar</button>
+					</div>
+				</form>
+				
+	    </div>
+	    
+	  </div>
+ 
+ 
+ 		<section id="noticias">
+ 		
+ 		
+			  <div class="page-header">
+			    <h3>Notícias</h3>  
+			  </div>
+	 
+			<div class="media" th:each="noticia : ${noticiaList}">
+				<a class="pull-left" href="#">  
+				</a>
+				<div class="media-body">
+					<h4 class="media-heading">
+						<a href="index_noticias_view.html" th:text="${noticia.titulo}">Título da Notícia</a> 
+						<span class="muted" th:text="${#dates.format(noticia.dataCriacao, 'dd/MMM/yyyy HH:mm')}">02/01/2013</span></h4>
+					<p>
+					<span th:text="${#strings.abbreviate(noticia.conteudo,255)}">Before downloading, be sure to have a code editor (we recommend Sublime Text 2) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files. Before downloading, be sure to have a code editor (we recommend Sublime Text 2) and some working knowledge of HTML and CSS. We won't walk through the source files here, but they are available for download. We'll focus on getting started with the compiled Bootstrap files</span>
+				 	</p>
+	 
+				 	 <span class="muted">Adicionado em 22/10/2012 22:22 (5 comentários)</span> 
+				</div>
+	
+			</div>
+	 
+	
+	
+			<hr />
+			
+			<div layout:include="thymeleaf/pagination_bar :: paginationbar" th:with="page=${pageNoticiaList}">
+			</div> 
+		   
+	
+		</section>
+
+
+	</section>
+	<!-- /container -->
+
+
+</body>
+</html>

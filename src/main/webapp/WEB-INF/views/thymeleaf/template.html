@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+		
+		
+    <head layout:fragment="header">
+    
+        <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link th:href="@{/resources/css/bootstrap.css}" rel="stylesheet"  />
+        <link th:href="@{/resources/css/bootstrap-responsive.css}" rel="stylesheet"/>
+    
+        <style>
+			body {
+				padding-top: 60px;
+				/* 60px to make the container go all the way to the bottom of the topbar */
+			}
+		</style>
+		
+        <title>Sisgac</title>  
+    </head>
+    
+    <body>
+    
+    <!-- Top Menu -->
+    <div layout:include="thymeleaf/template_top_menu :: menu_top">
+ 	</div>
+   
+
+	<div class="container">
+
+	<!-- Conteúdo vem aqui -->
+
+		<section layout:fragment="content">
+		
+	      <p>Conteúdo da página aqui</p>
+	      
+	    </section>
+
+
+ 	
+      <div id="push"></div>
+	<!-- footer -->
+    <div layout:include="thymeleaf/template_footer :: footer">
+ 	</div> 
+	
+
+	</div>
+	<!-- /container -->
+
+	 
+	<div layout:fragment="javascripts">
+	 	 <!-- Le javascript
+		    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script th:src="@{/resources/js/jquery.js}"></script>
+		<script th:src="@{/resources/js/bootstrap-transition.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-alert.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-modal.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-dropdown.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-scrollspy.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-tab.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-tooltip.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-popover.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-button.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-collapse.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-carousel.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-typeahead.js}"></script>
+		<script	th:src="@{/resources/js/bootstrap-fileupload.js}"></script>
+
+ 	</div>
+
+</body>
+</html>

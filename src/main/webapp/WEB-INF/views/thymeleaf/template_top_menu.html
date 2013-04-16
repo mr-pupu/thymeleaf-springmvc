@@ -1,0 +1,76 @@
+ <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<body>
+ 
+ 	<div layout:fragment="menu_top">
+ 	
+	 	
+	 	<div  class="navbar navbar-inverse navbar-fixed-top" >
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+						<span class="icon-bar"></span>
+					    <span class="icon-bar"></span> 
+					    <span class="icon-bar"></span>
+					</a> 
+					<a class="brand" href="#">Sisgac</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+						
+							<li>
+								<a href="#"><i class="icon-home"></i> Início</a>
+							</li>
+							<li>
+								<a href="#" th:href="@{/noticias}"> <i class="icon-comment"></i> Notícias</a>
+							</li>				
+							
+						</ul>
+				 
+						
+						<ul sec:authorize="isAnonymous()" class="nav pull-right">
+						  <li>
+						  		<a href="/users/sign_up">Cadastrar-se</a>
+						  </li>
+						  <li class="divider-vertical"></li>
+						 
+						  <li class="dropdown">
+						  
+							    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Entrar<strong class="caret"></strong></a>
+							   
+							    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+							      <!-- Login form here -->
+									<form action="#" th:action="@{/j_spring_security_check}" method="post" accept-charset="UTF-8">
+									  <input id="j_username" style="margin-bottom: 15px;" type="text" name="j_username" size="30"  placeholder="login"/>
+									  <input id="j_password" style="margin-bottom: 15px;" type="password" name="j_password" size="30"  placeholder="senha" />
+									  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
+									  <label class="string optional" for="user_remember_me">Lembrar-me</label>
+									 
+									  <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Acessar sistema" />
+									</form>
+							    </div>
+						    
+						  </li>
+						  
+						</ul>
+						
+						<ul  sec:authorize="isAuthenticated()" class="nav  pull-right">
+							<li>
+								<a href="#"><span sec:authentication="name">Lucas</span></a>
+							</li>
+							<li>						
+								<a  href="#" th:href="@{/usuario/logout}">Sair</a>
+							</li>
+						</ul>
+						
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+	</div> <!-- Menu-top -->
+</body>
+</html>

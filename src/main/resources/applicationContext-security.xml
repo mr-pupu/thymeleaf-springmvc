@@ -1,0 +1,54 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+		xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+							http://www.springframework.org/schema/security
+							http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+ 	 <http  auto-config="true"  use-expressions="true" access-denied-page="/403">
+ 	 	<form-login /> 	 	 	 
+ 	 	
+ 	 	<intercept-url pattern="/" access="permitAll" /> 	 	
+ 	 	<intercept-url pattern="/resources/**" access="permitAll" />
+ 	  
+ 	<!--  	<intercept-url pattern="/secured/**" access="isAuthenticated()" />  -->
+	      
+	      
+	   <form-login 
+		    login-page="/usuario/autenticar"
+		    authentication-failure-url="/usuario/autenticar?error=true"
+		    default-target-url="/secured/principal"/>
+		    
+		  <logout
+		    invalidate-session="true"
+		    logout-success-url="/usuario/autenticar"
+		    logout-url="/usuario/logout"/>
+		    
+		 </http>
+	   
+	  
+ 	<!-- Declare an authentication-manager to use a custom userDetailsService  
+	 <authentication-manager>
+	         <authentication-provider user-service-ref="userDetailsService">
+	           <password-encoder ref="passwordEncoder"/>
+	         </authentication-provider>
+	 </authentication-manager>
+	  
+	Use a Md5 encoder since the user's passwords are stored as Md5 in the database  
+	 
+	 <beans:bean class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" id="passwordEncoder"/>
+
+ 	-->
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="admin" password="admin" authorities="ROLE_MORADOR, ROLE_SINDICO" />
+				<user name="luksrn" password="luksrn" authorities="ROLE_MORADOR" />
+				<user name="valquiria" password="valquiria" authorities="ROLE_MORADOR" />
+				<user name="joao" password="joao" authorities="ROLE_MORADOR" />
+				<user name="douglas" password="douglas" authorities="ROLE_MORADOR" />				
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
